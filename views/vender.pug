@@ -1,0 +1,68 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title Document
+  link(rel='stylesheet' href='/css/index.css')
+  link(rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css')
+.big-container
+  .card-container
+    .card.p-4.mb-3.w-100(style='height: 250px;')
+      .d-flex.justify-content-between.align-items-center
+        .text-center.flex-fill.border-end
+          h2 UGX 50,000,000
+          p Sales
+        .text-center.flex-fill
+          h2 UGX 150,000,000
+          p Sales
+    .row
+      .col-sm-6.mb-3.mb-sm-0
+        .card
+          .card-body
+           h2(style='color: green;') #{inStockValue.toLocaleString()}
+           p In Stock
+      .col-sm-6
+        .card
+          .card-body
+           h2(style='color: red;') #{outOfStockCount}
+           p Out Of Stock
+  form#products-form(action='/vender' method='post')
+    h6 Add Product
+    .form-group
+      input#productName(type='text' name='productName' placeholder='Product Name')
+    .form-group
+      input#category(type='text' name='category' placeholder='Category')
+    .form-group
+      input#price(type='number' name='price' placeholder='Price')
+    .form-group
+      input#quantity(type='number' name='quantity' placeholder='Quantity')
+    .form-row
+      .form-group
+        input(type='text' name='color' placeholder='Color')
+      .form-group
+        input(type='text' name='image' placeholder='Upload Image')
+    .button
+       button.btn-1.btn-lg(type='submit') SAVE
+       button.btn-2.btn-lg(type='button' id='clearBtn') CLEAR
+  .table-box
+     table.table.table-striped.table-bordered
+      table
+        thead
+          tr
+            th ID
+            th NAME
+            th CATEGORY
+            th PRICE(UGX)
+            th QUANTITY
+        tbody
+          each product, index in products
+            tr
+              td #{index + 645341}
+              td #{product.productName}
+              td #{product.category}
+              td #{product.price.toLocaleString()}
+              td #{product.quantity}
+
+script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js')
+script(src='/script/index.js')
+
