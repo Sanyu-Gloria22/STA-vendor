@@ -57,7 +57,7 @@ head
         tbody
           each product, index in products
             tr
-              td #{index + 645341}
+              td #{'#' + (645341 + index)}
               td #{product.productName}
               td #{product.category}
               td #{product.price.toLocaleString()}
